@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -37,17 +38,20 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    #djangorestframework
-    'rest_framework',
-    'rest_framework.authtoken',
-    #dj-rest-auth
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'dj_rest_auth',
-    'dj_rest_auth.registration',
-    #internal apps
-    'accounts',
+    # djangorestframework
+    "rest_framework",
+    "rest_framework.authtoken",
+    # dj-rest-auth
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
+    #django-filters
+    'django_filters',
+    # internal apps
+    "accounts",
+    "blog",
 ]
 
 MIDDLEWARE = [
@@ -133,6 +137,29 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-#dj-rest-auth
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# djangorestframework
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': "blog.paginations.DefaultPagination",
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.TokenAuthentication",
+    ),
+
+}
+
+
+
+# dj-rest-auth and allauth
+REST_AUTH_REGISTER_SERIALIZERS = {
+    "REGISTER_SERIALIZER": "accounts.serializers.CustomRegisterSerializer"
+}
+REST_SESSION_LOGIN = True
 SITE_ID = 1
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+# ACCOUNT_ADAPTER = "accounts.adapter.AccountAdapter"
