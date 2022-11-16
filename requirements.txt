@@ -3,3 +3,7 @@ dj-rest-auth==2.2.5
 djangorestframework==3.14.0
 black==22.10.0
 django-filter==22.1
+psycopg2==2.9.5
+pytest-django==4.5.2
+pytest-factoryboy==2.5.0
+pytest-cov==4.0.0

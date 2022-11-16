@@ -14,14 +14,12 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure--(o0#&xt)h#u_oy=#)bdq&atiya&7g)^%8uqjv(60a6!z3z)fc"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,8 +45,8 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "dj_rest_auth",
     "dj_rest_auth.registration",
-    #django-filters
-    'django_filters',
+    # django-filters
+    "django_filters",
     # internal apps
     "accounts",
     "blog",
@@ -138,18 +136,14 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
 # djangorestframework
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': "blog.paginations.DefaultPagination",
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    "DEFAULT_PAGINATION_CLASS": "blog.paginations.DefaultPagination",
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.TokenAuthentication",
     ),
-
 }
-
 
 
 # dj-rest-auth and allauth
@@ -162,4 +156,4 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_AUTHENTICATION_METHOD = "username"
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-# ACCOUNT_ADAPTER = "accounts.adapter.AccountAdapter"
+ACCOUNT_ADAPTER = "accounts.adapter.AccountAdapter"
