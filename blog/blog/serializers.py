@@ -9,7 +9,6 @@ class NestedUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = ["id", "first_name", "last_name"]
-        read_only_fields = ["first_name", "last_name"]
 
 
 class PostSerializer(serializers.ModelSerializer):

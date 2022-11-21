@@ -157,3 +157,6 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_AUTHENTICATION_METHOD = "username"
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_ADAPTER = "accounts.adapter.AccountAdapter"
+
+#App Setting # todo dodelat verifikaci na to ze frond_end je napsanej
+FROND_END_VERIFY_URL = 'https://mywebsite.com/register/verify/'
