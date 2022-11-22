@@ -26,4 +26,3 @@ class PostSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data["author"] = self.get_author()
         return Post.objects.create(**validated_data)
-

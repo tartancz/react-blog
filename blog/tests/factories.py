@@ -15,10 +15,9 @@ fake = Faker()
 class _EmailAddressFactory(factory.django.DjangoModelFactory):
     primary = True
 
-
     class Meta:
         model = EmailAddress
-        django_get_or_create = ('email',)
+        django_get_or_create = ("email",)
 
 
 @register
@@ -31,8 +30,7 @@ class UserFactory(factory.django.DjangoModelFactory):
 
     class Meta:
         model = get_user_model()
-        django_get_or_create = ('username',)
-
+        django_get_or_create = ("username",)
 
     @factory.post_generation
     def verified(self, create, extracted):
@@ -51,4 +49,4 @@ class PostFactory(factory.django.DjangoModelFactory):
 
     class Meta:
         model = Post
-        django_get_or_create = ('title',)
+        django_get_or_create = ("title",)

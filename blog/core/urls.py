@@ -21,10 +21,10 @@ from rest_framework.routers import DefaultRouter
 from blog.views import PostViewSet
 
 router = DefaultRouter()
-router.register('post', PostViewSet, basename='post')
+router.register("post", PostViewSet, basename="post")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('auth/', include('accounts.urls')),
-    path('', include(router.urls))
+    path("auth/", include("accounts.urls")),
+    path("", include(router.urls)),
 ]

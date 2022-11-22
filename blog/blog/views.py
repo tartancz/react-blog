@@ -10,24 +10,25 @@ from blog.permisions import isOwnerOrReadOnly
 
 # Create your views here.
 
+
 class ProductFilter(filters.FilterSet):
     author = filters.NumberFilter(field_name="author__id")
-    text = filters.CharFilter(method='text_filter')
+    text = filters.CharFilter(method="text_filter")
 
     class Meta:
         model = Post
-        fields = ['author']
+        fields = ["author"]
 
-    def text_filter(self, queryset ,name , value):
-        '''
+    def text_filter(self, queryset, name, value):
+        """
         return all post where is value in title or in text
         ordered by first in title and then in text
-        '''
-        return queryset\
-            .filter(Q(title__icontains=value) | Q(text__icontains=value))\
-            .annotate(up=Q(title__icontains=value))\
-            .order_by('-up', '-created_at')
-
+        """
+        return (
+            queryset.filter(Q(title__icontains=value) | Q(text__icontains=value))
+            .annotate(up=Q(title__icontains=value))
+            .order_by("-up", "-created_at")
+        )
 
 
 class PostViewSet(

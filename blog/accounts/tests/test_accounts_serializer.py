@@ -14,8 +14,6 @@ data = {
 }
 
 
-
-
 def test_ser_registration_email_right_url(api_client, settings):
     api_client.post("/auth/registration/", data=data)
     email = mail.outbox[0]
@@ -25,9 +23,6 @@ def test_ser_registration_email_right_url(api_client, settings):
 
 def test_ser_registration_first_and_last_name(api_client):
     api_client.post("/auth/registration/", data=data)
-    user = User.objects.get(username=data['username'])
-    assert user.first_name == data['first_name']
-    assert user.last_name == data['last_name']
-
-
-
+    user = User.objects.get(username=data["username"])
+    assert user.first_name == data["first_name"]
+    assert user.last_name == data["last_name"]
